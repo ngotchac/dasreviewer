@@ -1,0 +1,50 @@
+<div id="comment-panel" class="ui very wide vertical inverted labeled icon sidebar">
+  <div class="item">
+      <h1>Code Comment!</h1>
+  </div>
+  <div class="ui inverted form">
+    <h4>Revision {{currentFile.revisionId}}</h4>
+    <h4>Issue<span ng-if="currentFile.issuesId.length > 1">s</span>: {{currentFile.issuesId.join(', ')}}</h4>
+    <h4 class="text-ellipsis single-line">File: {{currentFile.path}}</h4>
+    <ng-form name="comment">
+      <div class="field" ng-class="{error: !comment.lineNumber}">
+        <label>Line number</label>
+        <div class="ui icon input">
+          <i class="code icon"></i>
+          <input type="text" ng-model="comment.lineNumber" placeholder="42, 1337" required>
+        </div>
+      </div>
+      <div class="field" ng-class="{error: !comment.status}">
+        <label>Status</label>
+        <div class="ui fluid selection dropdown">
+          <div class="text">Select a status</div>
+          <i class="dropdown icon"></i>
+          <input type="hidden" name="status">
+          <div class="menu">
+            <div class="item" data-value="gj"><i class="circular thumbs up icon"></i> Good Job!</div>
+            <div class="item" data-value="warning"><i class="circular exclamation icon"></i> Warning</div>
+            <div class="item" data-value="rejected"><i class="circular ban circle icon"></i> Rejected</div>
+          </div>
+        </div>
+      </div>
+      <div class="field" ng-class="{error: !comment.comment}">
+        <label>Comment</label>
+        <textarea ng-model="comment.comment" placeholder="Comments are good for us!" ng-minlength="5" required></textarea>
+      </div>
+      <div class="field">
+        <div class="ui toggle checkbox">
+          <input id="checkDone" ng-model="comment.checkDone" type="checkbox">
+          <label for="checkDone">Done</label>
+        </div>
+      </div>
+      <div class="ui horizontal icon divider">
+        <i class="circular inverted leaf icon"></i>
+      </div>
+      <div class="item">
+        <div class="1 fluid ui buttons">
+          <div class="ui positive button" ng-class='{disabled: comment.$invalid}' ng-click="sendCodeReview()">Send!</div>
+        </div>
+      </div>
+    </ng-form>
+  </div>
+</div>

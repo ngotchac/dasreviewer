@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js full-height">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/semantic-ui/build/packaged/css/semantic.css" />
+    <link rel="stylesheet" href="bower_components/angular-native-picker/build/themes/default.css" />
+    <link rel="stylesheet" href="bower_components/angular-native-picker/build/themes/default.date.css" />
+    <link rel="stylesheet" href="bower_components/angular-native-picker/build/themes/default.time.css" />
+    <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/semantic-ui/build/packaged/css/semantic.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="scripts/patch-viewer/style.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="codereviewApp" class="pushed full-height" ng-init="isLoading=false" ng-controller="MainCtrl">
+    <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <side-panel></side-panel>
+
+    <comment-panel></comment-panel>
+
+    <div
+      class="ui black huge launch right attached button"
+      style="width: 60px;position: fixed;top: 2.6em;z-index: 1000;"
+      ng-click="toggleSidebar()">
+      <i class="icon setting layout"></i>
+    </div>
+
+    <div
+      class="ui black huge launch right attached button"
+      style="width: 60px;position: fixed;top: 5.6em;z-index: 1000;"
+      ng-click="toggleCommentsSidebar()">
+      <i class="icon comment layout"></i>
+    </div>
+
+    <main-display></main-display>
+
+
+    <div class="ui dimmer" ng-class='{active: isLoading}'>
+        <div class="ui text loader">Loading</div>
+    </div>
+
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/semantic-ui/build/packaged/javascript/semantic.js"></script>
+    <script src="bower_components/angular-native-picker/build/angular-datepicker.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
+    <script src="bower_components/sweetalert/lib/sweet-alert.js"></script>
+    <!-- endbower -->
+    <script src="bower_components/lz-string/libs/reference/lz-string-1.3.3.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/main-controller.js"></script>
+    <script src="scripts/commits-service.js"></script>
+    <script src="scripts/comment-service.js"></script>
+    <script src="scripts/side-panel/directive.js"></script>
+    <script src="scripts/comment-panel/directive.js"></script>
+    <script src="scripts/display/directive.js"></script>
+    <script src="scripts/patch-viewer/directive.js"></script>
+    <script src="scripts/drop-config/directive.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>

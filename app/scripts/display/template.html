@@ -1,0 +1,38 @@
+<div class="ui full-height">
+    <div class="row full-height">
+        <div ng-if="totalFiles" class="2 fluid ui basic buttons">
+            <div class="positive inverted ui square button" ng-click="previous()"><strong>Previous</strong></div>
+            <div class="positive inverted ui square button" ng-click="next()"><strong>Next</strong></div>
+        </div>
+        <div class="column padding-reset full-height">
+            <div class="ui huge message page full-height">
+                <div class="file-header">
+                    <div ng-if="!totalFiles">
+                        <h1 class="ui huge header">Review this bitch!</h1>
+                        <p>You must set the correct settings on the left, then you can save them, or click <b>GO!</b> to start the code review of the selected date.</p>
+                    </div>
+
+                    <div ng-if="totalFiles">
+                        <h5>Revision <a href="{{baseUrl+ 'projects/'+projectId+'/repository/revisions/' +currentFile.revisionId}}">{{currentFile.revisionId}}</a></h5>
+                        <h5>Issue<span ng-if="currentFile.revisionsIssues.length === 1">:</span><span ng-if="currentFile.revisionsIssues.length > 1">s</span>
+                            <span ng-repeat="issue in currentFile.revisionsIssues">
+                                <br ng-if="currentFile.revisionsIssues.length > 1" />
+                                <span ng-if="currentFile.revisionsIssues.length > 1" style="width: 2em;display: inline-block;">&nbsp;</span>
+                                <a href="{{baseUrl + '/issues/' + issue.id}}">
+                                    <span ng-if="issue.title">{{issue.title}}</span>
+                                    <span ng-if="!issue.title">#{{issue.id}}</span>
+                                </a>
+                            </span>
+                        </h5>
+                        <h4><a href="{{baseUrl + '/projects/'+projectId+'/repository/entry/' + currentFile.path}}">{{currentFile.path}}</a> 
+                        <small>({{currentFileIndex+1}}/{{totalFiles}})</small></h4>
+                    </div>
+
+                    <div ng-if="totalFiles">
+                        <patch-viewer patch-content="currentFile.patch" select-line="selectLine(line)"></patch-viewer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

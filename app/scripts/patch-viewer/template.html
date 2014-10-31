@@ -1,0 +1,22 @@
+<table class="diff-table" ng-if="tableData.length > 0">
+    <tbody ng-if="!fileAdded && !fileDeleted">
+        <tr ng-repeat="lineData in tableData">
+            <td class="blob-num {{lineData.leftClass}}" ng-click="selectLine({line: lineData.leftNum})">{{lineData.leftNum}}</td>
+            <td class="blob-code {{lineData.leftClass}}">{{lineData.leftData}}</td>
+            <td class="blob-num {{lineData.rightClass}}" ng-click="selectLine({line: lineData.rightNum})">{{lineData.rightNum}}</td>
+            <td class="blob-code {{lineData.rightClass}}">{{lineData.rightData}}</td>
+        </tr>
+    </tbody>
+    <tbody ng-if="fileAdded && !fileDeleted">
+        <tr ng-repeat="lineData in tableData">
+            <td class="blob-num {{lineData.rightClass}}" ng-click="selectLine({line: lineData.rightNum})">{{lineData.rightNum}}</td>
+            <td class="blob-code {{lineData.rightClass}}">{{lineData.rightData}}</td>
+        </tr>
+    </tbody>
+    <tbody ng-if="!fileAdded && fileDeleted">
+        <tr ng-repeat="lineData in tableData">
+            <td class="blob-num {{lineData.leftClass}}" ng-click="selectLine({line: lineData.leftNum})">{{lineData.leftNum}}</td>
+            <td class="blob-code {{lineData.leftClass}}">{{lineData.leftData}}</td>
+        </tr>
+    </tbody>
+</table>
