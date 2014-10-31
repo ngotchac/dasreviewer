@@ -4,7 +4,7 @@ DasReviewer is an AngularJS application for the CodeReview, used with [DasReview
 
 ## Usage
 
-Only two steps:
+Only two steps (might need a `sudo`):
 ```bash
 npm install && bower install
 ```
