@@ -19,7 +19,6 @@ This application is linked to a NodeJS server, that should be, by default, run o
 
 One might need to install Ruby, Sass & Compass (Ubuntu 12.04 - from [here](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-on-ubuntu-12-04-lts-precise-pangolin-with-rvm)):
 ```bash
-sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 \curl -L https://get.rvm.io |  sudo bash -s stable --ruby --autolibs=enable --auto-dotfiles
 sudo su
 
