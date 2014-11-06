@@ -11,7 +11,7 @@
                     scope: false,
                     restrict: 'EA',
                     replace: true,
-                    templateUrl: 'scripts/side-panel/template.html',
+                    templateUrl: 'views/side-panel.html',
                     link: function($scope) {
 
                         var config = localStorageService.get('config');

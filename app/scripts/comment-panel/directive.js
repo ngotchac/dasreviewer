@@ -11,7 +11,7 @@
                     scope: false,
                     restrict: 'EA',
                     replace: true,
-                    templateUrl: 'scripts/comment-panel/template.html',
+                    templateUrl: 'views/comment-panel.html',
                     link: function($scope, $element) {
                         $element.find('.ui.selection.dropdown').dropdown();
                         $element

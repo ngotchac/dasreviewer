@@ -10,7 +10,7 @@
                 return {
                     restrict: 'EA',
                     replace: true,
-                    templateUrl: 'scripts/patch-viewer/template.html',
+                    templateUrl: 'views/patch-viewer.html',
                     scope: {
                         'selectLine': '&selectLine',
                         patchContent: '&patchContent'

@@ -9,7 +9,7 @@
             function(localStorageService) {
                 return {
                     scope: false,
-                    templateUrl: 'scripts/display/template.html',
+                    templateUrl: 'views/display.html',
                     replace: true,
                     restrict: 'EA',
                     controller: function($scope) {
