@@ -13,7 +13,7 @@
                     </div>
 
                     <div ng-if="totalFiles">
-                        <h5>Revision <a href="{{baseUrl+ 'projects/'+projectId+'/repository/revisions/' +currentFile.revisionId}}">{{currentFile.revisionId}}</a></h5>
+                        <h5>Revision <a href="{{baseUrl+ '/projects/'+projectId+'/repository/revisions/' +currentFile.revisionId}}">{{currentFile.revisionId}}</a></h5>
                         <h5>Issue<span ng-if="currentFile.revisionsIssues.length === 1">:</span><span ng-if="currentFile.revisionsIssues.length > 1">s</span>
                             <span ng-repeat="issue in currentFile.revisionsIssues">
                                 <br ng-if="currentFile.revisionsIssues.length > 1" />

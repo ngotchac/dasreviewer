@@ -5,13 +5,24 @@
     angular
         .module('codereviewApp')
         .directive('mainDisplay', [
-            'localStorageService',
-            function(localStorageService) {
+            'localStorageService', '$timeout',
+            function(localStorageService, $timeout) {
                 return {
                     scope: false,
                     templateUrl: 'views/display.html',
                     replace: true,
                     restrict: 'EA',
+                    link: function($scope, $element) {
+                        angular.element('body').bind("keydown keypress", function (event) {
+                            if(event.keyCode === 37) {
+                                $scope.previous();
+                                $scope.$apply();
+                            } else if(event.keyCode === 39) {
+                                $scope.next();
+                                $scope.$apply();
+                            }
+                        });
+                    },
                     controller: function($scope) {
                         $scope.initCR = function() {
                             var commitFiles = localStorageService.get('retrieved_commits');
@@ -30,7 +41,9 @@
                             var commitFiles = localStorageService.get('retrieved_commits');
 
                             $scope.currentFile = commitFiles[$scope.currentFileIndex];
-                            $scope.currentFile.patch = LZString.decompress($scope.currentFile.patch);
+                            if($scope.currentFile) {
+                                $scope.currentFile.patch = LZString.decompress($scope.currentFile.patch);
+                            }
                         }
 
                         $scope.next = function() {

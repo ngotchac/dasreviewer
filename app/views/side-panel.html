@@ -23,6 +23,17 @@
           <input type="url" ng-model="config.redmineUrl" placeholder="http://projects.redmine.org" required>
         </div>
       </div>
+      <div class="field" ng-class="{error: !config.redmineDateFormat}">
+        <label>RedMine Date Format</label>
+        <div class="ui selection dropdown">
+            <div class="default text">Date Format</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item" data-value="fr">DD/MM/YYYY</div>
+                <div class="item" data-value="en">MM/DD/YYYY</div>
+            </div>
+        </div>
+      </div>
       <div class="field" ng-class="{error: !config.redmineProject}">
         <label>RedMine Project</label>
         <input type="text" ng-model="config.redmineProject" placeholder="Technomic" required>

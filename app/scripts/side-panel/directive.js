@@ -5,15 +5,14 @@
     angular
         .module('codereviewApp')
         .directive('sidePanel', [
-            'localStorageService', 'commitsService',
-            function(localStorageService, commitsService) {
+            'localStorageService', 'commitsService', '$timeout',
+            function(localStorageService, commitsService, $timeout) {
                 return {
                     scope: false,
                     restrict: 'EA',
                     replace: true,
                     templateUrl: 'views/side-panel.html',
-                    link: function($scope) {
-
+                    link: function($scope, $element) {
                         var config = localStorageService.get('config');
 
                         if(config !== null) {
@@ -21,7 +20,22 @@
                             $scope.config.redmineCookie = config.cookie;
                             $scope.config.redmineProject = config.project;
                             $scope.config.spreadsheetId = config.spreadsheetId;
+                            $scope.config.redmineDateFormat = config.redmineDateFormat;
                         }
+
+                        if(!$scope.config.redmineDateFormat) {
+                            $scope.config.redmineDateFormat = 'fr';
+                        }
+
+                        $element.find('.dropdown').dropdown('set selected', $scope.config.redmineDateFormat);
+                        $element.find('.dropdown').dropdown({
+                            onChange: function (val) {
+                                $scope.config.redmineDateFormat = val;
+                                $timeout(function() {
+                                    $scope.apply();
+                                });
+                            }
+                        });
 
                     },
                     controller: function($scope) {
@@ -34,6 +48,7 @@
                                 url: $scope.config.redmineUrl,
                                 cookie: $scope.config.redmineCookie,
                                 project: $scope.config.redmineProject,
+                                redmineDateFormat: $scope.config.redmineDateFormat,
                                 spreadsheetId: $scope.config.spreadsheetId
                             };
                             localStorageService.set('config', config);
@@ -45,6 +60,7 @@
                                 url: $scope.config.redmineUrl,
                                 cookie: $scope.config.redmineCookie,
                                 project: $scope.config.redmineProject,
+                                redmineDateFormat: $scope.config.redmineDateFormat,
                                 date: $scope.config.date
                             };
 
